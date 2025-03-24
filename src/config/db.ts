@@ -1,19 +1,14 @@
+//для подключения базы данных монго
 import mongoose from "mongoose";
 
-export const connectDB = async () => {
-  const uri = process.env.URI;
-  if (!uri) {
-    console.error("uri не задан в .env");
-    process.exit(1);
-  }
-
+const connectDB = async () => {
   try {
-    await mongoose.connect(uri, {
-      serverSelectionTimeoutMS: 5000,
-    });
-    console.log("MongoDB успешно подключён.");
+    await mongoose.connect(process.env.URI!);
+    console.log("mongodb connected");
   } catch (error) {
-    console.error("Ошибка при подключении к MongoDB:", error);
+    console.error("mongodb error: ", error);
     process.exit(1);
   }
 };
+
+export { connectDB };
