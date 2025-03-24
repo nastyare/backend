@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import User from "../models/user";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+import generateToken from "../utils/jwt";
 import { Types } from "mongoose";
 
 declare module "express" {
@@ -12,7 +12,7 @@ declare module "express" {
   }
 }
 
-export const registerUser = async (req: Request, res: Response) => {
+const registerUser = async (req: Request, res: Response) => {
   try {
     const { firstName, lastName, login, password, role } = req.body;
 
@@ -50,7 +50,7 @@ export const registerUser = async (req: Request, res: Response) => {
   }
 };
 
-export const loginUser = async (req: Request, res: Response): Promise<void> => {
+const loginUser = async (req: Request, res: Response): Promise<void> => {
   try {
     const { login, password } = req.body;
 
@@ -66,13 +66,7 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    const token = jwt.sign(
-      { userId: user._id },
-      process.env.JWT_SECRET as string,
-      {
-        expiresIn: "1h",
-      },
-    );
+    const token = generateToken(user._id.toString());
 
     res.status(200).json({ token });
   } catch (error) {
@@ -80,3 +74,5 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
     res.status(500).json({ message: "Ошибка при авторизации:", error });
   }
 };
+
+export { registerUser, loginUser };
