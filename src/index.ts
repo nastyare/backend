@@ -1,14 +1,20 @@
 import express from "express";
+import { connectDB } from "../src/config/db";
+import dotenv from "dotenv";
+import authRoutes from "../src/routes/authRoutes";
+import userRoutes from "../src/routes/userRoutes";
 
-const PORT = process.env.PORT || 4000;
+dotenv.config();
 
 const app = express();
-app.use(express.json());
+const PORT = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-  res.send("let's not fall in love");
-});
+app.use(express.json());
+connectDB();
+
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on: http://localhost:${PORT}`);
 });
