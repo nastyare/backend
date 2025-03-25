@@ -13,7 +13,7 @@ npm install -g yarn
 Создайте в корневой папке файл **`.env`** и добавьте туда:
 ```env
 PORT=2000
-MONGO_URI=mongodb://127.0.0.1:27017/mongo
+URI=mongodb://127.0.0.1:27017/mongo
 ```
 
 ### 3. Запуск MongoDB (локально или в облаке)
