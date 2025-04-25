@@ -63,19 +63,27 @@ mongod --dbpath <путь_к_базе>
 
 ### 5. **Курсы** 
 `POST /api/courses`
+
 `GET /api/allcourses`
+
 `GET /api/:id`
+
 `PUT /api/courses/:id`
+
 `DELETE /api/courses/:id`
 
 ### 6. **Избранное** (нужно авторизоваться)
 `POST /favorites/:courseId` 
+
 `DELETE /favorites/:courseId`
+
 `GET /favorites/`
 
 ### 7. **Тэги** (нужно авторизоваться)
 `POST /tags/` 
+
 `GET /tags/` 
+
 `POST /tags/:tagId/courses/:courseId`
 
 ## Технологии
