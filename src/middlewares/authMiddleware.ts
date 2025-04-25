@@ -13,12 +13,13 @@ const authMiddleware = (
 ) => {
   const authHeader = req.header("Authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    res.status(401).json({ message: "Впишите токен." });
+    res.status(401).json({ message: "Токен не найден." });
     return;
   }
 
   const token = authHeader.slice(7);
 
+  //seсret - bigbang
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload;
     req.user = { userId: decoded.userId };
