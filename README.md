@@ -1,6 +1,6 @@
 # Node.js API с авторизацией и ролями
 
-Этот проект представляет собой API, созданный с использованием **Node.js**, **Express**, **MongoDB**, **Mongoose** и **JWT** для управления пользователями с ролями "Студент" и "Преподаватель".
+Этот проект представляет собой API, созданный с использованием **Node.js**, **Express**, **MongoDB**, **Mongoose** и **JWT**.
 
 ## Как запустить проект
 
@@ -57,21 +57,26 @@ mongod --dbpath <путь_к_базе>
 
 ### 3️. **Получение данных о себе** (требуется токен)
 `GET /api/users/me`
-#### Заголовки:
-```json
-{
-  "Authorization": "Bearer jwt_token_here"
-}
-```
 
 ### 4️. **Удаление пользователя** (требуется токен)
 `DELETE /api/users/delete`
-#### Заголовки:
-```json
-{
-  "Authorization": "Bearer jwt_token_here"
-}
-```
+
+### 5. **Курсы** 
+`POST /api/courses`
+`GET /api/allcourses`
+`GET /api/:id`
+`PUT /api/courses/:id`
+`DELETE /api/courses/:id`
+
+### 6. **Избранное** (нужно авторизоваться)
+`POST /favorites/:courseId` 
+`DELETE /favorites/:courseId`
+`GET /favorites/`
+
+### 7. **Тэги** (нужно авторизоваться)
+`POST /tags/` 
+`GET /tags/` 
+`POST /tags/:tagId/courses/:courseId`
 
 ## Технологии
 - **Node.js** (сервер)
