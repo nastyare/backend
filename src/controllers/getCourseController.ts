@@ -47,7 +47,10 @@ const getAllCourses = async (req: Request, res: Response) => {
 
 const getCourseById = async (req: Request, res: Response) => {
   try {
-    const course = await Course.findById(req.params.id).populate("tags");
+    const course = await Course.findById(req.params.id)
+      .populate("tags")
+      .populate("lessons");
+
     if (!course) {
       res.status(404).json({
         status: "fail",
