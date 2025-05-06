@@ -19,7 +19,6 @@ const authMiddleware = (
 
   const token = authHeader.slice(7);
 
-  //seсret - bigbang
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload;
     req.user = { userId: decoded.userId };
