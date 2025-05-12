@@ -6,7 +6,7 @@ const addToFavorites = async (
   req: Request,
   res: Response,
   next: NextFunction,
-): Promise<void> => {
+) => {
   try {
     if (!req.user?.userId) {
       res.status(401).json({ message: "Сначала авторизуйтесь." });

@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Comment from "../models/comment";
 
-export const createComment = async (req: Request, res: Response) => {
+const createComment = async (req: Request, res: Response) => {
   try {
     const { lessonId } = req.params;
     const { text } = req.body;
@@ -24,7 +24,7 @@ export const createComment = async (req: Request, res: Response) => {
   }
 };
 
-export const getLessonComments = async (req: Request, res: Response) => {
+const getLessonComments = async (req: Request, res: Response) => {
   try {
     const { lessonId } = req.params;
 
@@ -40,7 +40,7 @@ export const getLessonComments = async (req: Request, res: Response) => {
   }
 };
 
-export const updateComment = async (req: Request, res: Response) => {
+const updateComment = async (req: Request, res: Response) => {
   try {
     const { commentId } = req.params;
     const { text } = req.body;
@@ -65,7 +65,7 @@ export const updateComment = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteComment = async (req: Request, res: Response) => {
+const deleteComment = async (req: Request, res: Response) => {
   try {
     const { commentId } = req.params;
 
@@ -87,3 +87,5 @@ export const deleteComment = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Ошибка удаления комментария.", error });
   }
 };
+
+export { createComment, updateComment, getLessonComments, deleteComment };

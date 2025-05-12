@@ -8,9 +8,9 @@ const getCurrentUser = async (req: Request, res: Response) => {
       return;
     }
 
-    const userProfile = await User.findById(req.user.userId).select(
-      "-password",
-    );
+    const userProfile = await User.findById(req.user.userId)
+      .select("-password")
+      .populate("favorites");
 
     if (!userProfile) {
       res.status(404).json({ message: "Пользователь не найден." });
