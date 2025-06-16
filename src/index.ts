@@ -8,6 +8,8 @@ import tagRoutes from "./routes/tagRoutes";
 import favoriteRoutes from "./routes/favoriteRoutes";
 import lessonRoutes from "./routes/lessonRoutes";
 import commentRoutes from "./routes/commentRoutes";
+import enrollmentRoutes from "./routes/enrollment/enrollmentRoutes";
+import progressRoutes from "./routes/enrollment/progressRoutes";
 
 dotenv.config();
 
@@ -24,7 +26,9 @@ app.use("/tags", tagRoutes);
 app.use("/favorites", favoriteRoutes);
 app.use("/lessons", lessonRoutes);
 app.use("/comments", commentRoutes);
+app.use("/enrollments", enrollmentRoutes);
+app.use("/progress", progressRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Server is running on: http://localhost:${PORT}`);
+  console.log(`сервер работает на: http://localhost:${PORT}`);
 });
