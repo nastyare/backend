@@ -12,6 +12,12 @@ const userSchema = new Schema({
       ref: "Course",
     },
   ],
+  enrollments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Enrollment",
+    },
+  ],
 });
 
 const User = mongoose.model("User", userSchema);
